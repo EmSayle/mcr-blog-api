@@ -1,10 +1,10 @@
-# Music API Test Suite
+# Blog - Mcr-Buzz API 
 
-This repository contains the integration test suite for Music Library API challenge.
+This is the necessary API for the Mcr-Buzz blog post application.
 
 ### Install
 - Fork this repository
-- `git clone git@github.com:<your-github-username>/music-library-api.git`
+- `git clone git@github.com:<your-github-username>/mcr-blog-api.git`
 - `npm install`
 
 ### Running the Tests
