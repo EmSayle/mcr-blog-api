@@ -23,7 +23,7 @@ userSchema.pre('save', function hashPassword(next) {
 
 userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
-}
+};
 
 const User =  mongoose.model('User', userSchema);
 
