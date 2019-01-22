@@ -1,9 +1,10 @@
 const express = require('express');
-
 const app = express();
+const cors = require('cors');
+const user = require('./controllers/user');
 
-app.get('*', (req, res) => {
-  res.status(200).json({ message: 'Hello World!' });
-});
+app.use(express.json());
+app.use(cors());
+app.post('/users', user.create);
 
 module.exports = app;
