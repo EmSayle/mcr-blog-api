@@ -8,7 +8,7 @@ exports.login = (req, res) => {
         res.status('200').json({ token });
       });
     } else {
-      res.status(401).send();
+      res.status(401).send('hello');
     }
   });
 };

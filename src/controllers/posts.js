@@ -6,6 +6,7 @@ exports.addPost = (req, res) => {
     title: req.body.title,
     image: req.body.image,
     description: req.body.description,
+    user: req.authorizer._id,
   });
 
   post.save().then(() => {
