@@ -16,10 +16,14 @@ exports.addPost = (req, res) => {
       if (error.name === 'ValidationError') {
         const titleError = error.errors.title ? error.errors.title.message : null;
         const descriptionError = error.errors.description ? error.errors.description.message : null;
+        const categoryError = error.errors.category ? error.errors.category.message : null;
+        const imageError = error.errors.image ? error.errors.image.message : null;
         res.status(400).json({
           errors: {
             title: titleError,
             description: descriptionError,
+            category: categoryError,
+            image: imageError,
           },
         });
       } else {
