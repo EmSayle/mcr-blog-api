@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 const auth = (req, res, next) => {
+  console.log('middleware auth hit');
+  
   const token = req.get('Authorization');
   jwt.verify(token, process.env.JWT_SECRET, (error, authorizer) => {
     if (!error) {

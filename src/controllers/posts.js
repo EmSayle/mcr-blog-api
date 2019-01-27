@@ -1,4 +1,4 @@
-const Post = require('../models/user');
+const Post = require('../models/posts');
 
 exports.addPost = (req, res) => {
   const post = new Post({
@@ -6,7 +6,8 @@ exports.addPost = (req, res) => {
     title: req.body.title,
     image: req.body.image,
     description: req.body.description,
-    user: req.authorizer._id,
+    // user: req.authorizer._id,
+    // commenting this out returns the above fields as null
   });
 
   post.save().then(() => {
@@ -26,6 +27,8 @@ exports.addPost = (req, res) => {
             image: imageError,
           },
         });
+        // console.log(error);
+        
       } else {
         res.status(400).json(error);
       }
