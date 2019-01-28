@@ -6,8 +6,6 @@ exports.addPost = (req, res) => {
     title: req.body.title,
     image: req.body.image,
     description: req.body.description,
-    // user: req.authorizer._id,
-    // commenting this out returns the above fields as null
   });
 
   post.save().then(() => {
@@ -27,8 +25,6 @@ exports.addPost = (req, res) => {
             image: imageError,
           },
         });
-        // console.log(error);
-        
       } else {
         res.status(400).json(error);
       }
