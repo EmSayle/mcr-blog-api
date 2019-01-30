@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
   category: {
-    type: Array,
-    required: [true, 'category is required'],
+    type: String,
   },
   title: {
     type: String,
@@ -11,8 +10,11 @@ const postSchema = new mongoose.Schema({
   image: {
     type: String,
   },
-  Description: {
+  description: {
     type: String,
+  },
+  datePosted: {
+    type: Number,
   },
 });
 
