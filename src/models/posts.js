@@ -13,6 +13,9 @@ const postSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  datePosted: {
+    type: Number,
+  },
 });
 
 const Post = mongoose.model('post', postSchema);
