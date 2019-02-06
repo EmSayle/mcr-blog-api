@@ -1,7 +1,6 @@
 const Post = require('../models/posts');
 const moment = require('moment');
 
-
 exports.addPost = (req, res) => {
   const post = new Post({
     category: req.body.category,
@@ -9,7 +8,10 @@ exports.addPost = (req, res) => {
     image: req.body.image,
     description: req.body.description,
     datePosted: moment().utc().valueOf(),
+    user: req.body.user,
   });
+
+  console.log(req.body);
 
   post.save().then(() => {
     res.status(201).json(post);

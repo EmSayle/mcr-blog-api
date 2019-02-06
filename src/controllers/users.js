@@ -6,6 +6,7 @@ const create = (req, res) => {
     lastName: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
+    userName: req.body.userName,
   });
 
   user.save()
