@@ -43,7 +43,6 @@ exports.getPosts = (req, res) => {
 
 exports.findById = (req, res) => {
   Post.findById(req.params.id, (err, post) => {
-    console.log('IN POST CONTROLLER', req.params.id);
 
     if (err || post === null) {
       res.status(404).json({ error: 'The post does not exist.' });

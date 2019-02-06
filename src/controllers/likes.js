@@ -3,9 +3,6 @@ const Post = require('../models/posts');
 
 exports.addLike = (req, res) => {
   Post.findById(req.params.id, (err, post) => {
-    console.log('IN LIKE CONTROLLER POST ID', req.params);
-    console.log('IN LIKE REQ IS', req.body);
-    console.log('IN LIKE RES IS', res.body);
     if (err) {
       return res.status(500).json('cannot add like');
     }
