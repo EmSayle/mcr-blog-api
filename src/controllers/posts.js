@@ -1,4 +1,5 @@
 const Post = require('../models/posts');
+const moment = require('moment');
 
 exports.addPost = (req, res) => {
   const post = new Post({
@@ -6,8 +7,11 @@ exports.addPost = (req, res) => {
     title: req.body.title,
     image: req.body.image,
     description: req.body.description,
-    // like: req.body.like,
+    datePosted: moment().utc().valueOf(),
+    user: req.body.user,
   });
+
+  console.log(req.body);
 
   post.save().then(() => {
     res.status(201).json(post);
@@ -18,14 +22,14 @@ exports.addPost = (req, res) => {
         const descriptionError = error.errors.description ? error.errors.description.message : null;
         const categoryError = error.errors.category ? error.errors.category.message : null;
         const imageError = error.errors.image ? error.errors.image.message : null;
-        // const likeError = error.errors.like ? error.errors.like.message : null;
+        const datePostedError = error.errors.datePosted ? error.errors.datePosted.message : null;
         res.status(400).json({
           errors: {
             title: titleError,
             description: descriptionError,
             category: categoryError,
             image: imageError,
-            // like: likeError,
+            datePosted: datePostedError,
           },
         });
       } else {
