@@ -13,6 +13,10 @@ const postSchema = new mongoose.Schema({
   description: {
     type: String,
   },
+  likes: {
+    type: Number,
+    default: 0,
+  },
   datePosted: {
     type: Number,
   },

@@ -36,10 +36,22 @@ exports.addPost = (req, res) => {
         res.status(400).json(error);
       }
     });
+    console.log(post);
 };
 
 exports.getPosts = (req, res) => {
   Post.find({}, (err, posts) => {
     res.status(200).send(posts);
+  });
+};
+
+exports.findById = (req, res) => {
+  Post.findById(req.params.id, (err, post) => {
+
+    if (err || post === null) {
+      res.status(404).json({ error: 'The post does not exist.' });
+    } else {
+      res.status(200).json(post);
+    }
   });
 };
