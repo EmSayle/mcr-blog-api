@@ -1,6 +1,7 @@
 const Post = require('../models/posts');
 const moment = require('moment');
 
+
 exports.addPost = (req, res) => {
   const post = new Post({
     category: req.body.category,
@@ -10,9 +11,9 @@ exports.addPost = (req, res) => {
     datePosted: moment().utc().valueOf(),
     user: req.body.user,
   });
-
+  
   console.log(req.body);
-
+  
   post.save().then(() => {
     res.status(201).json(post);
   })
@@ -36,18 +37,17 @@ exports.addPost = (req, res) => {
         res.status(400).json(error);
       }
     });
-    console.log(post);
+  console.log(post);
 };
 
 exports.getPosts = (req, res) => {
   Post.find({}, (err, posts) => {
     res.status(200).send(posts);
-  });
+  }).sort({ datePosted: -1 });
 };
 
 exports.findById = (req, res) => {
   Post.findById(req.params.id, (err, post) => {
-
     if (err || post === null) {
       res.status(404).json({ error: 'The post does not exist.' });
     } else {
